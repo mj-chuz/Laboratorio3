@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "IMC Aleatorio";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Resultado Aleatorio IMC </title>
+    <meta charset="utf-8" />
+    <!--Esto es un comentario-->
+    <!--En el head se coloca información que es para el navegador, scripts, css-->
+</head>
+<body>
+    <!--Aquí inicia el cuerpo de la página que se está creando (la vista)-->
+    <h1> Resultado </h1>
+
+    <div class="seccion_1" id="s2">
+        <ul>
+            <li> IMC menor que 18,5 -> peso insuficiente </li>
+            <li> IMC 18,5 y 24,9 -> peso normal </li>
+            <li> IMC mayor que 25 -> sobrepeso </li>
+        </ul>
+    </div>
+
+
+
+    <div class="seccion_2" id="s3">
+        <a class="btn btn-info" href="@Url.Action("Index", "Home")">Volver al inicio</a>
+        <hr />
+    </div>
+
+
+    <div class="seccion_3" id="s1">
+
+        <table class="table">
+
+            <tr>
+
+                <th> Id </th>
+
+                <th> Nombre </th>
+
+                <th> Peso </th>
+
+                <th> Estatura </th>
+
+                <th> IMC </th>
+
+            </tr>
+
+             @for (int numeroPersonas = 0; numeroPersonas < 30; numeroPersonas++){
+                <tr>
+               
+                    <td>@ViewBag.personas[numeroPersonas].Id</td>
+
+                    <td> @ViewBag.personas[numeroPersonas].Nombre</td>
+
+                    <td> @ViewBag.personas[numeroPersonas].Peso</td>
+
+                    <td> @ViewBag.personas[numeroPersonas].Estatura</td>
+
+                    
+                    @if (ViewBag.IMCs[numeroPersonas] >= 18.5 && ViewBag.IMCs[numeroPersonas] <= 24.9)
+                    {
+                  
+                        <td style="color:green"> @ViewBag.IMCs[numeroPersonas]</td>
+                    }
+                    else 
+                    {
+                        <td style="color:red"> @ViewBag.IMCs[numeroPersonas]</td>
+                    }
+
+                </tr>
+            }
+
+        </table>
+
+        <hr />
+
+    </div>
+
+
+</body>
+</html>
